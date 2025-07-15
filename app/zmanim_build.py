@@ -32,7 +32,7 @@ def get_announcements_zmanim(dates, calendar):
 
     friday_dict = {
         "english_date": friday_day,
-        "hebrew_date": friday['Hebrew Date'].unique()[0],
+        "hebrew_date": ' '.join(friday['Hebrew Date'].unique()[0].split(' ')[0:2]),
         "plag_mincha": friday[friday['Name'] == 'Plag Mincha']['Time'].to_string(index=False),
         "candle_lighting": friday[friday['Name'] == 'Candle Lighting']['Time'].to_string(index=False),
         "shkia": friday[friday['Name'] == 'Shkia']['Time'].to_string(index=False),
@@ -42,7 +42,7 @@ def get_announcements_zmanim(dates, calendar):
 
     shabbos_dict = {
         "english_date": shabbos_day,
-        "hebrew_date": shabbos['Hebrew Date'].unique()[0],
+        "hebrew_date": ' '.join(shabbos['Hebrew Date'].unique()[0].split(' ')[0:2]),
         "shacharis": shabbos[shabbos['Name'] == 'Shacharis']['Time'].to_string(index=False),
         "zman_kriyas_shema": shabbos[shabbos['Name'] == 'Latest Shema']['Time'].to_string(index=False),
         "mincha": shabbos[shabbos['Name'] == 'Mincha']['Time'].to_string(index=False),
@@ -56,9 +56,9 @@ def get_announcements_zmanim(dates, calendar):
 
     sunday_dict = {
         "english_date": sunday_day,
-        "hebrew_date": sunday['Hebrew Date'].unique()[0],
+        "hebrew_date": ' '.join(sunday['Hebrew Date'].unique()[0].split(' ')[0:2]),
         "shacharis": sunday[sunday['Name'] == 'Shacharis']['Time'].to_string(index=False),
-        "zman_kriyas_shema": sunday[sunday['Name'] == 'Last Shema']['Time'].to_string(index=False),
+        "zman_kriyas_shema": sunday[sunday['Name'] == 'Latest Shema']['Time'].to_string(index=False),
         "maariv": sunday[sunday['Name'] == 'Maariv']['Time'].to_string(index=False)
     }
 
