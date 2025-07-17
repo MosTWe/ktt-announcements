@@ -21,35 +21,31 @@ def write_announcements(zmanim):
     section.left_margin = section.left_margin//2
     section.right_margin = section.right_margin//2
 
-    font = document.styles['Normal'].font
-    font.name = 'Arial'
-    font.size = 11
-
     p = document.add_paragraph()
     p.alignment = WD_ALIGN_PARAGRAPH.CENTER
     p.add_run(f'Erev Shabbos, {zmanim['friday']['english_month']} {zmanim['friday']['english_day']}').underline = True
-    english_ordinality = p.add_run(zmanim['friday']['english_ordinality'])
-    english_ordinality.font.superscript = True
-    english_ordinality.underline = True
+    fri_english_ordinality = p.add_run(zmanim['friday']['english_ordinality'])
+    fri_english_ordinality.font.superscript = True
+    fri_english_ordinality.underline = True
     p.add_run(f' ({zmanim['friday']['hebrew_day']}')
-    hebrew_ordinality = p.add_run(zmanim['friday']['hebrew_ordinality'])
-    hebrew_ordinality.font.superscript = True
-    hebrew_ordinality.underline = True
+    fri_hebrew_ordinality = p.add_run(zmanim['friday']['hebrew_ordinality'])
+    fri_hebrew_ordinality.font.superscript = True
+    fri_hebrew_ordinality.underline = True
     p.add_run(f' {zmanim['friday']['hebrew_month']})\n').underline = True
-    p.add_run(f'{zmanim['friday']['plag_mincha']} Plag Mincha/Kabbalas Shabbos\n').bold = True
-    p.add_run(f'Early Candle Lighting not before 6:55pm\n(The ideal time for Plag Candle Lighting is roughly 30 minutes after the start of Mincha)').italic = True
+    p.add_run(f'{zmanim['friday']['early_shabbos']} Plag Mincha/Kabbalas Shabbos\n').bold = True
+    p.add_run(f'Early Candle Lighting not before {zmanim['friday']['plag_mincha']}\n(The ideal time for Plag Candle Lighting is roughly 30 minutes after the start of Mincha)').italic = True
     p.add_run('\n')
     p.add_run(f'{zmanim['friday']['candle_lighting']} Candle Lighting/Mincha\n').bold = True
     p.add_run(f'{zmanim['friday']['shkia']} Shkia\n')
     p.add_run('\n')
     p.add_run(f'Shabbos, {zmanim['shabbos']['english_month']} {zmanim['shabbos']['english_day']}').underline = True
-    english_ordinality = p.add_run(zmanim['shabbos']['english_ordinality'])
-    english_ordinality.font.superscript = True
-    english_ordinality.underline = True
+    shab_english_ordinality = p.add_run(zmanim['shabbos']['english_ordinality'])
+    shab_english_ordinality.font.superscript = True
+    shab_english_ordinality.underline = True
     p.add_run(f' ({zmanim['shabbos']['hebrew_day']}')
-    hebrew_ordinality = p.add_run(zmanim['shabbos']['hebrew_ordinality'])
-    hebrew_ordinality.font.superscript = True
-    hebrew_ordinality.underline = True
+    shab_hebrew_ordinality = p.add_run(zmanim['shabbos']['hebrew_ordinality'])
+    shab_hebrew_ordinality.font.superscript = True
+    shab_hebrew_ordinality.underline = True
     p.add_run(f' {zmanim['shabbos']['hebrew_month']})\n').underline = True    
     p.add_run(f'{zmanim['shabbos']['shacharis']} Shacharis\n').bold = True
     p.add_run(f'{zmanim['shabbos']['zman_kriyas_shema']} Zman Kriyas Shema\n')
@@ -72,13 +68,13 @@ def write_announcements(zmanim):
     p.add_run(f'{zmanim['shabbos']['havdalah']} Maariv/Havdalah\n').bold = True
     p.add_run('\n')
     p.add_run(f'Sunday, {zmanim['sunday']['english_month']} {zmanim['sunday']['english_day']}').underline = True
-    english_ordinality = p.add_run(zmanim['sunday']['english_ordinality'])
-    english_ordinality.font.superscript = True
-    english_ordinality.underline = True
+    sun_english_ordinality = p.add_run(zmanim['sunday']['english_ordinality'])
+    sun_english_ordinality.font.superscript = True
+    sun_english_ordinality.underline = True
     p.add_run(f' ({zmanim['sunday']['hebrew_day']}')
-    hebrew_ordinality = p.add_run(zmanim['sunday']['hebrew_ordinality'])
-    hebrew_ordinality.font.superscript = True
-    hebrew_ordinality.underline = True
+    sun_hebrew_ordinality = p.add_run(zmanim['sunday']['hebrew_ordinality'])
+    sun_hebrew_ordinality.font.superscript = True
+    sun_hebrew_ordinality.underline = True
     p.add_run(f' {zmanim['sunday']['hebrew_month']})\n').underline = True
     p.add_run(f'{zmanim['sunday']['shacharis']} Shacharis\n').bold = True
     p.add_run('\n')
@@ -149,4 +145,7 @@ def write_announcements(zmanim):
     # p.add_run('\n')
     # p.add_hyperlink('KTT Board', address='https://www.torahtemima.org/ktt-board').bold = True
     # p.add_run('\n')
+    for run in p.runs:
+        run.font.name = 'Arial'
+        run.font.size = shared.Pt(11)
     document.save(f'resources/{parsha.replace(' ','')}.docx')

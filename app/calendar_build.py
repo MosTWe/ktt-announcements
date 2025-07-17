@@ -21,7 +21,7 @@ def get_calendar_data(filename):
     df['Hebrew Day'] = df['Hebrew Date'].apply(lambda x: x.split(' ')[0].strip())
     df['Hebrew Ordinality'] = df['Hebrew Day'].apply(lambda x: ordinal_day(x))
     df['Hebrew Month'] = df['Hebrew Date'].apply(lambda x: x.split(' ')[1].strip())
-    df['Time'] = df['Start'].dt.strftime('%-I:%M %p')
+    df['Time'] = df['Start']
 
     return df[['Type', 'Name', 'English Date', 'English Day', 'English Ordinality', 'English Month', 'Hebrew Date', 'Hebrew Day', 'Hebrew Ordinality', 'Hebrew Month', 'Time']]
 
