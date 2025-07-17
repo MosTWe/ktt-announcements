@@ -26,23 +26,32 @@ def get_announcements_zmanim(dates, calendar):
     shabbos = calendar[calendar['English Date'] == shabbos_day]
     sunday = calendar[calendar['English Date'] == sunday_day]
 
-    print("Friday: ", friday["Name"])
-    print("Shabbos: ", shabbos["Name"])
-    print("Sunday: ", sunday["Name"])
-
+    print("English day: ", friday['English Day'].unique()[0])
     friday_dict = {
         "english_date": friday_day,
-        "hebrew_date": ' '.join(friday['Hebrew Date'].unique()[0].split(' ')[0:2]),
+        "english_day": friday['English Day'].unique()[0],
+        "english_ordinality": friday['English Ordinality'].unique()[0],
+        "english_month": friday['English Month'].unique()[0],
+        "hebrew_date": friday['Hebrew Date'].unique()[0],
+        "hebrew_day": friday['Hebrew Day'].unique()[0],
+        "hebrew_ordinality": friday['Hebrew Ordinality'].unique()[0],
+        "hebrew_month": friday['Hebrew Month'].unique()[0],
         "plag_mincha": friday[friday['Name'] == 'Plag Mincha']['Time'].to_string(index=False),
         "candle_lighting": friday[friday['Name'] == 'Candle Lighting']['Time'].to_string(index=False),
         "shkia": friday[friday['Name'] == 'Shkia']['Time'].to_string(index=False),
         "shacharis": friday[friday['Name'] == 'Shacharis']['Time'].to_string(index=False),
         "maariv": friday[friday['Name'] == 'Maariv']['Time'].to_string(index=False),
     }
-
+    print("Friday number: ", friday_dict['english_day'])
     shabbos_dict = {
         "english_date": shabbos_day,
-        "hebrew_date": ' '.join(shabbos['Hebrew Date'].unique()[0].split(' ')[0:2]),
+        "english_day": shabbos['English Day'].unique()[0],
+        "english_ordinality": shabbos['English Ordinality'].unique()[0],
+        "english_month": shabbos['English Month'].unique()[0],
+        "hebrew_date": shabbos['Hebrew Date'].unique()[0],
+        "hebrew_day": shabbos['Hebrew Day'].unique()[0],
+        "hebrew_ordinality": shabbos['Hebrew Ordinality'].unique()[0],
+        "hebrew_month": shabbos['Hebrew Month'].unique()[0],
         "shacharis": shabbos[shabbos['Name'] == 'Shacharis']['Time'].to_string(index=False),
         "zman_kriyas_shema": shabbos[shabbos['Name'] == 'Latest Shema']['Time'].to_string(index=False),
         "mincha": shabbos[shabbos['Name'] == 'Mincha']['Time'].to_string(index=False),
@@ -56,7 +65,13 @@ def get_announcements_zmanim(dates, calendar):
 
     sunday_dict = {
         "english_date": sunday_day,
-        "hebrew_date": ' '.join(sunday['Hebrew Date'].unique()[0].split(' ')[0:2]),
+        "english_day": sunday['English Day'].unique()[0],
+        "english_ordinality": sunday['English Ordinality'].unique()[0],
+        "english_month": sunday['English Month'].unique()[0],
+        "hebrew_date": sunday['Hebrew Date'].unique()[0],
+        "hebrew_day": sunday['Hebrew Day'].unique()[0],
+        "hebrew_ordinality": sunday['Hebrew Ordinality'].unique()[0],
+        "hebrew_month": sunday['Hebrew Month'].unique()[0],
         "shacharis": sunday[sunday['Name'] == 'Shacharis']['Time'].to_string(index=False),
         "zman_kriyas_shema": sunday[sunday['Name'] == 'Latest Shema']['Time'].to_string(index=False),
         "maariv": sunday[sunday['Name'] == 'Maariv']['Time'].to_string(index=False)
