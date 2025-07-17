@@ -9,8 +9,8 @@ def write_announcements(zmanim):
     weekstart = zmanim['sunday']['english_date']
     weekstart = datetime.strptime(weekstart, '%B %d').date() + timedelta(days=1)  # Assuming week starts on Sunday
     weekend = weekstart + timedelta(days=4)
-    weekstart = weekstart.strftime('%B %d')
-    weekend = weekend.strftime('%B %d')
+    weekstart = weekstart.strftime('%m/%d')
+    weekend = weekend.strftime('%m/%d')
 
 
     document = Document()
