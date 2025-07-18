@@ -65,7 +65,13 @@ def write_announcements(zmanim):
     p.add_run('\n')
     p.add_run(f'{zmanim['shabbos']['shkia']} Shkia\n')
     p.add_run(f'{zmanim['shabbos']['eretz_yisrael_seder']} Eretz Yisrael Seder \n')
-    p.add_run(f'{zmanim['shabbos']['havdalah']} Maariv/Havdalah\n').bold = True
+    havdalah = zmanim['shabbos']['havdalah']
+    maariv = zmanim['shabbos']['maariv']
+    if havdalah == maariv:
+        p.add_run(f'{zmanim['shabbos']['havdalah']} Maariv/Havdalah\n').bold = True
+    else:
+        p.add_run(f'{zmanim['shabbos']['maariv']} Maariv\n').bold = True
+        p.add_run(f'{zmanim['shabbos']['havdalah']} Havdalah\n')
     p.add_run('\n')
     p.add_run(f'Sunday, {zmanim['sunday']['english_month']} {zmanim['sunday']['english_day']}').underline = True
     sun_english_ordinality = p.add_run(zmanim['sunday']['english_ordinality'])
