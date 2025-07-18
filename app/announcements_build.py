@@ -50,16 +50,16 @@ def write_announcements(zmanim):
     p.add_run(f'{zmanim['shabbos']['shacharis']} Shacharis\n').bold = True
     p.add_run(f'{zmanim['shabbos']['zman_kriyas_shema']} Zman Kriyas Shema\n')
     p.add_run('\n')
-    p.add_run('8:45am Youth Groups \n')
-    p.add_run('9:30am Open Playroom for Toddlers \n')
-    p.add_run('10:15am Mommy and Me (ages 4 and younger) \n')
+    p.add_run('8:45 AM Youth Groups \n')
+    p.add_run('9:30 AM Open Playroom for Toddlers \n')
+    p.add_run('10:15 AM Mommy and Me (ages 4 and younger) \n')
     p.add_run('\n')
     p.add_run('Hot Kiddush\n').bold = True
     p.add_run('Thank you to our Kiddush Sponsors listed in the announcements!\n ')
     p.add_run('\n')
     p.add_run(f'{zmanim['shabbos']['mincha']} Mincha \n').bold = True
     p.add_run('Seudas Shelishis\n')
-    p.add_run('Sponsored by _________\n').italic = True
+    p.add_run('Sponsored by _________ ').italic = True
     p.add_run('in honor of _________\n').italic = True
     p.add_run('Topic: _________\n').italic = True
     p.add_run('\n')
@@ -87,12 +87,13 @@ def write_announcements(zmanim):
     p.add_run('Topic: _________\n').italic = True
     p.add_run('\n')
     p.add_run(f'Weekday Shacharis ({weekstart} - {weekend})\n').underline = True
-    p.add_run('6:30am ').bold = True
+    p.add_run('6:30 AM ').bold = True
     p.add_run('Pre-Shacharis Shiur with Rabbi Davis\n')
     p.add_run('Coffee and light breakfast served daily, sponsored by Yael & Uri Segelman\n').italic = True
-    p.add_run('6:35am ').bold = True 
+    p.add_run('6:35 AM ').bold = True 
     p.add_run('Monday and Thursday\n')
-    last = p.add_run('6:45am Tuesday, Wednesday, and Friday\n')
+    p.add_run('6:45 AM ').bold = True
+    last = p.add_run('Tuesday, Wednesday, and Friday\n')
     last.add_break(WD_BREAK.PAGE)
     heading = p.add_run('Announcements\n')
     heading.bold = True
