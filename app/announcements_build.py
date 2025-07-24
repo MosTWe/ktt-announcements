@@ -27,7 +27,7 @@ def write_announcements(zmanim):
     fri_english_ordinality = p.add_run(zmanim['friday']['english_ordinality'])
     fri_english_ordinality.font.superscript = True
     fri_english_ordinality.underline = True
-    p.add_run(f' ({zmanim['friday']['hebrew_day']}')
+    p.add_run(f' ({zmanim['friday']['hebrew_day']}').underline = True
     fri_hebrew_ordinality = p.add_run(zmanim['friday']['hebrew_ordinality'])
     fri_hebrew_ordinality.font.superscript = True
     fri_hebrew_ordinality.underline = True
@@ -42,7 +42,7 @@ def write_announcements(zmanim):
     shab_english_ordinality = p.add_run(zmanim['shabbos']['english_ordinality'])
     shab_english_ordinality.font.superscript = True
     shab_english_ordinality.underline = True
-    p.add_run(f' ({zmanim['shabbos']['hebrew_day']}')
+    p.add_run(f' ({zmanim['shabbos']['hebrew_day']}').underline = True
     shab_hebrew_ordinality = p.add_run(zmanim['shabbos']['hebrew_ordinality'])
     shab_hebrew_ordinality.font.superscript = True
     shab_hebrew_ordinality.underline = True
@@ -77,7 +77,7 @@ def write_announcements(zmanim):
     sun_english_ordinality = p.add_run(zmanim['sunday']['english_ordinality'])
     sun_english_ordinality.font.superscript = True
     sun_english_ordinality.underline = True
-    p.add_run(f' ({zmanim['sunday']['hebrew_day']}')
+    p.add_run(f' ({zmanim['sunday']['hebrew_day']}').underline = True
     sun_hebrew_ordinality = p.add_run(zmanim['sunday']['hebrew_ordinality'])
     sun_hebrew_ordinality.font.superscript = True
     sun_hebrew_ordinality.underline = True
