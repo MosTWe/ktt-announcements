@@ -9,8 +9,8 @@ def write_announcements(zmanim):
     weekstart = zmanim['sunday']['english_date']
     weekstart = datetime.strptime(weekstart, '%B %d').date() + timedelta(days=1)  # Assuming week starts on Sunday
     weekend = weekstart + timedelta(days=4)
-    weekstart = weekstart.strftime('%-m/%d')
-    weekend = weekend.strftime('%-m/%d')
+    weekstart = weekstart.strftime('%-m/%-d')
+    weekend = weekend.strftime('%-m/%-d')
 
 
     document = Document()
@@ -33,7 +33,8 @@ def write_announcements(zmanim):
     fri_hebrew_ordinality.underline = True
     p.add_run(f' {zmanim['friday']['hebrew_month']})\n').underline = True
     p.add_run(f'{zmanim['friday']['early_shabbos']} Plag Mincha/Kabbalas Shabbos\n').bold = True
-    p.add_run(f'Early Candle Lighting not before {zmanim['friday']['plag_mincha']}\n(The ideal time for Plag Candle Lighting is roughly 30 minutes after the start of Mincha)').italic = True
+    p.add_run(f'Early Candle Lighting not before {zmanim['friday']['plag_mincha']}\n(The ideal time for Plag Candle Lighting is roughly 30 minutes after the start of Mincha)\n').italic = True
+    p.add_run(f'(Note: We will be taking a count on Erev Shabbos on the KTT Minyan WhatApp to confirm a Plag minyan)').italic = True
     p.add_run('\n')
     p.add_run(f'{zmanim['friday']['candle_lighting']} Candle Lighting/Mincha\n').bold = True
     p.add_run(f'{zmanim['friday']['shkia']} Shkia\n')

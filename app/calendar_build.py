@@ -15,7 +15,7 @@ def get_calendar_data(filename):
     df['Start'] = pd.to_datetime(df['Start'], format='mixed', dayfirst=True)
     df['English Date'] = df['Start'].dt.strftime('%B %d')
     df['English Month'] = df['Start'].dt.strftime('%B')
-    df['English Day'] = df['Start'].dt.strftime('%d')
+    df['English Day'] = df['Start'].dt.strftime('%-d')
     df['English Ordinality'] = df['English Day'].apply(lambda x: ordinal_day(x))
     df['Hebrew Date'] = df['Hebrew Date'].apply(lambda x: ' '.join(x.split(' ')[0:2]).strip())
     df['Hebrew Day'] = df['Hebrew Date'].apply(lambda x: x.split(' ')[0].strip())

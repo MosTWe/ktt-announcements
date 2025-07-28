@@ -1,13 +1,12 @@
 import calendar_build as cal
-from datetime import date, timedelta
+from datetime import date, timedelta, datetime
 from announcements_build import write_announcements
-import json
+import argparse, sys
 
-def get_announcements_dates():   
-    today = date.today()
-    current_weekday = (today.weekday())
+def get_announcements_dates(target_date):   
+    current_weekday = (target_date.weekday())
     days_until_friday = 4 - current_weekday 
-    friday =  today + timedelta(days=days_until_friday)
+    friday =  target_date + timedelta(days=days_until_friday)
     shabbos = friday + timedelta(days=1)
     sunday = shabbos + timedelta(days=1)
     return [friday, shabbos, sunday]
@@ -26,6 +25,8 @@ def get_announcements_zmanim(dates, calendar):
     shabbos = calendar[calendar['English Date'] == shabbos_day]
     sunday = calendar[calendar['English Date'] == sunday_day]
 
+    print("havdalah: ",shabbos[shabbos['Name'] == 'Havdalah'])
+    print("names ", calendar['Name'].unique())
     friday_dict = {
         "english_date": friday_day,
         "english_day": friday['English Day'].unique()[0],
@@ -86,15 +87,10 @@ def get_announcements_zmanim(dates, calendar):
 
     return zmanim
 
-def format_announcements(zmanim):
-    print("Formatting announcements for the week")
-
-
-
-def build_announcements():
+def build_announcements(month, target_date=date.today()):
     """Builds the announcement flyer for the week"""
-    calendar = cal.get_calendar_data('july')
-    dates = get_announcements_dates()
+    calendar = cal.get_calendar_data(month)
+    dates = get_announcements_dates(target_date)
 
 
     
@@ -105,5 +101,8 @@ def build_announcements():
 
     # print(zmanim)
 
-
-build_announcements()
+parser = argparse.ArgumentParser()
+parser.add_argument("--month", type=str, help="Specify the month for which to build announcements (e.g., 'January')", required=True)
+parser.add_argument("--date", type=str, help="Specify the output file name for the announcements")
+args = parser.parse_args()
+build_announcements(args.month, datetime.strptime(args.date, "%m-%d-%Y").date() if args.date else None)
